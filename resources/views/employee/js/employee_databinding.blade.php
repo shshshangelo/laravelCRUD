@@ -32,12 +32,12 @@
 						PHONENUM    				: ui('EMP_PHONENUMBER').getValue().trim(),
 						EMAILADD    				: ui('EMP_EMAILADD').getValue().trim(),
 
-						EDUCLVL					: ui("EMP_EDUCLEVEL").getSelectedButton().getId(),
+						EDUCLVL						: ui("EMP_EDUCLEVEL").getSelectedButton().getId(),
 						JOBTITLE    				: ui('EMP_JOBTITLE').getValue().trim(),
-						EMPSTARTDATE    				: ui('EMP_STARTDATE').getValue().trim(),
-						EMPSTATUS     					: ui('EMP_STATUS').getSelectedKey(),
+						EMPSTARTDATE    			: ui('EMP_STARTDATE').getValue().trim(),
+						EMPSTATUS     				: ui('EMP_STATUS').getSelectedKey(),
 						WORKSCHED    				: ui('EMP_WORKSCHED').getValue().trim(),
-						MANAGERSNAME      				: ui('EMP_MANAGER').getValue().trim(),
+						MANAGERSNAME      			: ui('EMP_MANAGER').getValue().trim(),
 						EMERGENCYCONTACTINFO     	: ui('EMP_EMERGENCYCONTACTINFO').getValue().trim()
 				}];
 
@@ -131,7 +131,7 @@
 			ui("CREATE_EMPINFO_SAVE_BTN").setVisible(true);
 			ui("CREATE_EMPINFO_EDIT_BTN").setVisible(false);
 			ui("CREATE_EMPINFO_CANCEL_BTN").setVisible(false);
-			ui("CREATE_BP_DEL_BTN").setVisible(false);
+			ui("CREATE_EMPINFO_DEL_BTN").setVisible(false);
 
 
 			//title and crumbs
@@ -165,7 +165,7 @@
 			ui("CREATE_EMPINFO_SAVE_BTN").setVisible(true);
 			ui("CREATE_EMPINFO_EDIT_BTN").setVisible(false);
 			ui("CREATE_EMPINFO_CANCEL_BTN").setVisible(true);
-			ui("CREATE_BP_DEL_BTN").setVisible(false);
+			ui("CREATE_EMPINFO_DEL_BTN").setVisible(false);
 
 
 			//Fields
@@ -198,7 +198,7 @@
 			ui("CREATE_EMPINFO_SAVE_BTN").setVisible(false);
 			ui("CREATE_EMPINFO_EDIT_BTN").setVisible(true);
 			ui("CREATE_EMPINFO_CANCEL_BTN").setVisible(false);
-			ui("CREATE_BP_DEL_BTN").setVisible(true);
+			ui("CREATE_EMPINFO_DEL_BTN").setVisible(true);
 
 
 
@@ -383,7 +383,7 @@
 			})
 		]
 	}).addStyleClass('sapUiSizeCompact');
-	let lv_dialog_del = new sap.m.Dialog("BP_DELETE_DIALOG",{
+	let lv_dialog_del = new sap.m.Dialog("EMPINFO_DELETE_DIALOG",{
 		title: "Confirmation",
 		beginButton: new sap.m.Button({
 			text:"Ok",
