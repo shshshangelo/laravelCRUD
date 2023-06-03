@@ -190,15 +190,20 @@
 								let lv_message_strip = "";
 									if(empID){
 										if(screenMode._mode == "create"){
-											let isExist = EmpInfoDataOrganizer._validateEmpID(empID);
-											if(isExist){
-												message = "Employee ID already exist.";
-												ui('EMP_ID').setValueState("Error").setValueStateText(message);
-												lv_message_strip = fn_show_message_strip("MESSAGE_STRIP_EMPINFO_ERROR",message);
-												ui('MESSAGE_STRIP_EMPINFO_ERROR').setVisible(true).addContent(lv_message_strip);
-											}else{
-												ui('EMPINFO_SAVE_DIALOG').open();
+											let response = async () => {
+												let isExist = await EmpInfoDataOrganizer._filteredById(empID);
+												if(isExist.length){
+													message = "Employee ID already exist.";
+													ui('EMP_ID').setValueState("Error").setValueStateText(message);
+													lv_message_strip = fn_show_message_strip("MESSAGE_STRIP_EMPINFO_ERROR",message);
+													ui('MESSAGE_STRIP_EMPINFO_ERROR').setVisible(true).addContent(lv_message_strip);
+												}else{
+													ui('EMPINFO_SAVE_DIALOG').open();
+												}
+
 											}
+											response();
+											
 										}else{
 											ui('EMPINFO_SAVE_DIALOG').open();
 										}
@@ -226,11 +231,11 @@
 								screenMode._display(screenMode._id);
                             }
                         }),
-						new sap.m.Button("CREATE_BP_DEL_BTN", {
+						new sap.m.Button("CREATE_EMPINFO_DEL_BTN", {
                             visible: true,
                             icon: "sap-icon://delete",
                             press: function () {
-								ui('BP_DELETE_DIALOG').open();
+								ui('EMPINFO_DELETE_DIALOG').open();
                             }
                         }),
                     ]
@@ -587,7 +592,6 @@
 			contentMiddle:[gv_Lbl_NewPrdPage_Title = new sap.m.Label("EMPINFO_LISTING_PAGE_LABEL",{text:"Employee Information's Listing"})],
 			
 			contentRight:[
-				//fn_help_button(SelectedAppID,"BP_LISTING"),
 				new sap.m.Button({  
 					icon: "sap-icon://home",
 					press: function(){
