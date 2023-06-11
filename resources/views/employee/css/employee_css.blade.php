@@ -59,8 +59,11 @@
 	.sapUiRespGrid, .sapMLIB {
 		background: #9f5df6 !important;
 	}
+	.__label2-bdi	{	
+	color: white;
+	}
 	.sapMLabel{
-		color: blue !important;
+		color: black !important;
 		font-family: "Lucida Console", "Courier New", monospace !important;
 	}
 	.sapMBreadcrumbsSeparator, .sapUiFormTitle, .sapMLnk, #CREATE_EMPINFO_BRDCRMS-currentText, #DISP_EMPINFO_BRDCRMS-currentText, #LIST_EMPINFO_BRDCRMS-currentText, #EMPINFO_LISTING_PAGE_LABEL-bdi, #DISPLAY_EMPINFO_TABLE_LABEL  {
@@ -100,16 +103,27 @@
 	, #__button0-inner {
 		background: black !important;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
+/** MODAL */
+.sapMMessageToast{
+        background : #6d3c99 ;
+        width:50rem ;
+        max-width : 50rem ;
+        opacity: 1 ;
+		color: white;
+		font-size: 20px;
+		font-family: Arial;
+		z-index: 99999;
+		filter: drop-shadow(2px 3px 4px black);
+    }
+.body{
+	z-index: -999;
+}
+.columns{
+	width: 70%;
+}
+.sapMSlt.sapMSltReadonly {
+		border-color: #ccc;
+		background: transparent;
+		border: 1px transparent;
+	}
 </style>
