@@ -16,7 +16,7 @@
 
 
         go_SplitContainer = new sap.ui.unified.SplitContainer({ content: [go_App_Right], secondaryContent: [go_App_Left]});		
-        go_SplitContainer.setSecondaryContentWidth("250px");
+        go_SplitContainer.setSecondaryContentWidth("300px");
         go_SplitContainer.setShowSecondaryContent(true);
         
 
@@ -194,6 +194,8 @@
 												let isExist = await EmpInfoDataOrganizer._filteredById(empID);
 												if(isExist.length){
 													message = "Employee ID already exist.";
+													let empid = Math.floor(Math.random()*1000000);	
+													ui("EMP_ID").setValue(empid);
 													ui('EMP_ID').setValueState("Error").setValueStateText(message);
 													lv_message_strip = fn_show_message_strip("MESSAGE_STRIP_EMPINFO_ERROR",message);
 													ui('MESSAGE_STRIP_EMPINFO_ERROR').setVisible(true).addContent(lv_message_strip);
@@ -433,15 +435,7 @@
 			],
 
 			contentMiddle:[gv_Lbl_NewPrdPage_Title = new sap.m.Label("DISP_EMPINFO_TITLE",{text:"Display Employee's Information"})],
-			
-			contentRight:[
-				new sap.m.Button({
-					icon: "sap-icon://home",
-					press: function(){
-						window.location.href = MainPageLink; 
-					}
-				})
-			]
+		
 		});
 		
 		var lv_crumbs = new sap.m.Breadcrumbs("DISP_EMPINFO_BRDCRMS",{
@@ -472,7 +466,7 @@
 							ui("DISPLAY_EMPINFO_TABLE").setVisible(false);
 						}
 					},
-					placeholder: "Type the ID to search the specific Employee Information.",
+					placeholder: "Type the ID to search the specific Employee's",
 					search: function(oEvent){
 						var lv_searchval = oEvent.getSource().getValue().trim();
 						displayEmpInfo._get_data(lv_searchval);
@@ -514,6 +508,14 @@
 				
 			},
 			columns: [
+
+				new sap.ui.table.Column({label:new sap.m.Text({text:"id"}),
+					width:"20%",
+					sortProperty:"id",
+					filterProperty:"id",
+					autoResizable:true,
+					template:new sap.m.Text({text:"{id}",maxLines:1}),
+				}),
 			
 				new sap.ui.table.Column({label:new sap.m.Text({text:"Employee ID"}),
 					width:"20%",
@@ -591,14 +593,6 @@
 				],
 			contentMiddle:[gv_Lbl_NewPrdPage_Title = new sap.m.Label("EMPINFO_LISTING_PAGE_LABEL",{text:"Employee Information's Listing"})],
 			
-			contentRight:[
-				new sap.m.Button({  
-					icon: "sap-icon://home",
-					press: function(){
-					window.location.href = MainPageLink; 
-					}
-				})
-			]
 		});
 					
 		var lv_crumbs = new sap.m.Breadcrumbs("LIST_EMPINFO_BRDCRMS",{
@@ -663,13 +657,21 @@
 			columns:[
 
 				// COLUMN 1
+
+				new sap.ui.table.Column({label:new sap.m.Text({text:"id"}),
+					width:"150px",
+					sortProperty:"id",
+					filterProperty:"id",
+					//autoResizable:true,
+					template:new sap.m.Text({text:"{id}",maxLines:1}),
+				}),
 				
 				new sap.ui.table.Column({label:new sap.m.Text({text:"Employee ID"}),
 					width:"150px",
 					sortProperty:"EMP_ID",
 					filterProperty:"EMP_ID",
 					//autoResizable:true,
-					template:new sap.m.Text({text:"{EMP_ID}",tooltip:"{EMP_ID}",maxLines:1}),
+					template:new sap.m.Text({text:"{EMP_ID}",maxLines:1}),
 				}),
 				new sap.ui.table.Column({label:new sap.m.Text({text:"First Name"}),
 					width:"150px",
