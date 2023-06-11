@@ -10,7 +10,7 @@
 			return data;
 		},
 		_filteredById : async function(id){
-			let busyDialog = showBusyDialog("Please wait loading..");
+			let busyDialog = showBusyDialog("Please wait loading...");
 			busyDialog.open();
 			const emp_id = btoa(id);
 			const response =  await fetch("/employee/getDataById/"+emp_id);
@@ -19,7 +19,7 @@
 			return getDataById;
 		},
 		_updateById : function(id){
-			let busyDialog = showBusyDialog("Please wait loading..");
+			let busyDialog = showBusyDialog("Please wait loading...");
 				busyDialog.open();
 			
 				let EmpDataUpdate = [{
@@ -55,7 +55,7 @@
 			}).then((response) => {
 				if(response.ok){
 					screenMode._display(id);
-					fn_show_message_toast("Successfully updated employeeinformation #"+id);
+					fn_show_message_toast("Successfully updated employee information #"+id);
 				}
 				console.log(response);
 				return response.json();
@@ -68,7 +68,7 @@
 			});
 		},
 		_removeById : function(id){
-			let busyDialog = showBusyDialog("Please wait loading..");
+			let busyDialog = showBusyDialog("Please wait loading...");
 				busyDialog.open();
 				
 			const emp_id = {EMP_ID : id}
@@ -123,6 +123,9 @@
 		_title : "",
 		_mode : "",
 		_create : function(){
+			let empid = Math.floor(Math.random()*1000000);	
+			ui("EMP_ID").setValue(empid);
+
 			this._mode = "create";
 			let empinfo_title = this._title;
 			empinfo_title = "Create A New Employee Information";
@@ -140,7 +143,7 @@
 			ui("PANEL_FORM").setTitle("New Employee Information");
 
 			//Fields
-			ui('EMP_ID').setEditable(true);
+			ui('EMP_ID').setEditable(false);
 			ui('EMP_FNAME').setEditable(true);
 			ui('EMP_LNAME').setEditable(true);
 			ui('EMP_BDATE').setEditable(true);
@@ -238,7 +241,7 @@
 		},
 		_clear : function(){
 			ui('MESSAGE_STRIP_EMPINFO_ERROR').destroyContent().setVisible(false);
-			ui('EMP_ID').setValue("");
+			// ui('EMP_ID').setValue("");
 
 			ui('EMP_FNAME').setValue("");
 			ui('EMP_LNAME').setValue("");
@@ -260,7 +263,7 @@
 	};
 
     const createEmpInfo = () => {
-		let busyDialog = showBusyDialog("Please wait loading..");
+		let busyDialog = showBusyDialog("Please wait loading...");
 		busyDialog.open();
 		let data_for_general = {
 			EMP_ID      				: ui('EMP_ID').getValue().trim(),
@@ -310,7 +313,7 @@
 		
 		_get_data:  async (search) =>{
 			
-			let busyDialog = showBusyDialog("Please wait loading..");
+			let busyDialog = showBusyDialog("Please wait loading...");
 				busyDialog.open();
 
 				let data = await EmpInfoDataOrganizer._filteredById(search);
@@ -378,7 +381,7 @@
 		content:[
 			new sap.m.HBox({
 				items:[
-				new sap.m.Label({text:"Confirm to save changes?"})
+				new sap.m.Label({text:"Confirm to add new employee?"})
 				]
 			})
 		]
