@@ -508,14 +508,6 @@
 				
 			},
 			columns: [
-
-				new sap.ui.table.Column({label:new sap.m.Text({text:"id"}),
-					width:"20%",
-					sortProperty:"id",
-					filterProperty:"id",
-					autoResizable:true,
-					template:new sap.m.Text({text:"{id}",maxLines:1}),
-				}),
 			
 				new sap.ui.table.Column({label:new sap.m.Text({text:"Employee ID"}),
 					width:"20%",
@@ -657,15 +649,6 @@
 			columns:[
 
 				// COLUMN 1
-
-				new sap.ui.table.Column({label:new sap.m.Text({text:"id"}),
-					width:"150px",
-					sortProperty:"id",
-					filterProperty:"id",
-					//autoResizable:true,
-					template:new sap.m.Text({text:"{id}",maxLines:1}),
-				}),
-				
 				new sap.ui.table.Column({label:new sap.m.Text({text:"Employee ID"}),
 					width:"150px",
 					sortProperty:"EMP_ID",
